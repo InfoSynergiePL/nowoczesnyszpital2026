@@ -14,6 +14,7 @@
             scroll-behavior: smooth;
         }
 
+        /* PATCH: Chrome mobile fix */
         .hero-bg {
             position: relative;
             background-color: #0f172a;
@@ -21,7 +22,10 @@
                               url('https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=2000'); 
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
+            background-attachment: scroll;
+        }
+        @media (min-width: 1024px) {
+            .hero-bg { background-attachment: fixed; }
         }
 
         .hero-bg::after {
@@ -69,37 +73,44 @@
             padding: 0 0.2em;
         }
 
-        /* Styl dla siatki logotypów partnerów - układ poziomy 3 w rzędzie */
         .logo-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 kolumny */
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
             align-items: center;
             justify-items: center;
-            max-width: 900px; /* Ograniczenie szerokości dla lepszej czytelności przy 3 elementach */
+            max-width: 900px;
             margin: 0 auto;
         }
 
-        /* Responsywność - na małych ekranach 1 lub 2 w rzędzie */
         @media (max-width: 768px) {
-            .logo-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .logo-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 480px) {
-            .logo-grid {
-                grid-template-columns: 1fr;
-            }
+            .logo-grid { grid-template-columns: 1fr; }
         }
 
         .logo-item {
-            @apply flex items-center justify-center p-4 bg-white border border-slate-100 rounded-2xl grayscale transition-all duration-300 hover:grayscale-0 hover:border-sky-200 hover:shadow-lg;
             width: 100%;
-            height: 110px; /* Wysokość kontenera */
+            height: 110px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:1rem;
+            background:white;
+            border:1px solid #e5e7eb;
+            border-radius:1rem;
+            filter:grayscale(1);
+            transition:.3s;
+        }
+        .logo-item:hover{
+            filter:none;
+            border-color:#bae6fd;
+            box-shadow:0 10px 20px -8px rgba(0,0,0,.15);
         }
 
         .logo-item img {
-            height: 70px; /* Stała wysokość logotypu */
+            height: 70px;
             width: auto;
             max-width: 100%;
             object-fit: contain;
@@ -108,57 +119,85 @@
 </head>
 <body class="bg-white text-slate-900">
 
-    <!-- Nawigacja -->
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 py-3 shadow-sm">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-            <div class="flex items-center space-x-8">
-                <div class="flex items-center border-r border-slate-200 pr-8 h-12">
-                    <img src="logo OSSP blue.png" alt="Logo OSSP" class="nav-logo" onerror="this.src='https://placehold.co/150x60/0369a1/ffffff?text=OSSP'">
-                </div>
-                <div class="flex items-center h-12">
-                    <img src="logo UEHP.png" alt="Logo UEHP" class="nav-logo" onerror="this.src='https://placehold.co/150x60/1e3a8a/ffffff?text=UEHP'">
-                </div>
+<!-- Nawigacja -->
+<nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 py-3 shadow-sm">
+    <div class="container mx-auto px-6 flex justify-between items-center">
+        <div class="flex items-center space-x-8">
+            <div class="flex items-center border-r border-slate-200 pr-8 h-12">
+                <img src="logo OSSP blue.png" alt="Logo OSSP" class="nav-logo" onerror="this.src='https://placehold.co/150x60/0369a1/ffffff?text=OSSP'">
             </div>
-
-            <div class="hidden lg:flex space-x-8 text-sm font-bold text-slate-600 items-center">
-                <a href="#nagrody" class="hover:text-sky-600 transition">EPHA Awards</a>
-                <a href="#program" class="hover:text-sky-600 transition">Agenda</a>
-                <a href="#partnerzy" class="hover:text-sky-600 transition">Partnerzy</a>
-                <a href="#rejestracja" class="bg-sky-600 text-white px-6 py-3 rounded-xl hover:bg-sky-700 transition shadow-lg shadow-sky-200">Rejestracja</a>
+            <div class="flex items-center h-12">
+                <img src="logo UEHP.png" alt="Logo UEHP" class="nav-logo" onerror="this.src='https://placehold.co/150x60/1e3a8a/ffffff?text=UEHP'">
             </div>
         </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="relative min-h-[90vh] flex items-center pt-20 hero-bg text-white">
-        <div class="container mx-auto px-6 relative z-10 text-center md:text-left">
-            <div class="max-w-4xl">
-                <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 px-5 py-2 rounded-full text-white text-sm font-semibold mb-8">
-                    <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    9 Marca 2026 | Warszawa | Lokalizacja???
-                </div>
-                <h1 class="text-5xl md:text-6xl font-extrabold leading-[1.1] mb-6 tracking-tight">
-                    NOWOCZESNY SZPITAL 2026
-                </h1>
-                <h2 class="text-xl md:text-4xl font-bold text-sky-400 mb-12 tracking-wide uppercase">
-                    INNOWACYJNY <span class="plus-icon text-white">+</span> EFEKTYWNY <span class="plus-icon text-white">+</span> BEZPIECZNY
-                </h2>
-                <div class="text-slate-200 text-xl md:text-2xl mb-12 max-w-3xl leading-snug font-light">
-                    <p class="mb-1">Najważniejsze spotkanie innowacyjnych szpitali prywatnych.</p>
-                    <p class="mb-1">Poznaj laureatów European Private Hospitals Awards</p>
-                    <p>i standardy nowoczesnego szpitalnictwa.</p>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-5">
-                    <a href="#rejestracja" class="bg-sky-600 text-white px-10 py-5 rounded-2xl font-bold text-xl hover:bg-sky-500 transition shadow-2xl shadow-sky-900/50 text-center">
-                        Weź udział w wydarzeniu
-                    </a>
-                    <a href="#program" class="glass-effect text-white px-10 py-5 rounded-2xl font-bold text-xl hover:bg-white/20 transition text-center border border-white/30">
-                        Zobacz program
-                    </a>
-                </div>
+        <!-- PATCH: hamburger tylko na mobile -->
+        <button id="menuBtn" class="lg:hidden text-2xl text-slate-700">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="hidden lg:flex space-x-8 text-sm font-bold text-slate-600 items-center">
+            <a href="#nagrody" class="hover:text-sky-600 transition">EPHA Awards</a>
+            <a href="#program" class="hover:text-sky-600 transition">Agenda</a>
+            <a href="#partnerzy" class="hover:text-sky-600 transition">Partnerzy</a>
+            <a href="#rejestracja" class="bg-sky-600 text-white px-6 py-3 rounded-xl hover:bg-sky-700 transition shadow-lg shadow-sky-200">Rejestracja</a>
+        </div>
+    </div>
+</nav>
+
+<!-- PATCH: menu mobile -->
+<div id="mobileMenu" class="hidden fixed top-[72px] left-0 right-0 z-40 bg-white border-b shadow-lg lg:hidden">
+    <div class="flex flex-col px-6 py-4 gap-4 font-bold text-slate-700">
+        <a href="#nagrody">EPHA Awards</a>
+        <a href="#program">Agenda</a>
+        <a href="#partnerzy">Partnerzy</a>
+        <a href="#rejestracja" class="bg-sky-600 text-white px-6 py-3 rounded-xl text-center">Rejestracja</a>
+    </div>
+</div>
+
+<!-- Hero Section -->
+<section class="relative min-h-[90vh] flex items-center pt-20 hero-bg text-white">
+    <div class="container mx-auto px-6 relative z-10 text-center md:text-left">
+        <div class="max-w-4xl">
+            <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 px-5 py-2 rounded-full text-white text-sm font-semibold mb-8">
+                <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                9 Marca 2026 | Warszawa | Lokalizacja???
+            </div>
+            <!-- PATCH: breakpointy -->
+            <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-[1.1] mb-6 tracking-tight">
+                NOWOCZESNY SZPITAL 2026
+            </h1>
+            <h2 class="text-lg sm:text-xl md:text-4xl font-bold text-sky-400 mb-12 tracking-wide uppercase">
+                INNOWACYJNY <span class="plus-icon text-white">+</span> EFEKTYWNY <span class="plus-icon text-white">+</span> BEZPIECZNY
+            </h2>
+            <div class="text-slate-200 text-xl md:text-2xl mb-12 max-w-3xl leading-snug font-light">
+                <p class="mb-1">Najważniejsze spotkanie innowacyjnych szpitali prywatnych.</p>
+                <p class="mb-1">Poznaj laureatów European Private Hospitals Awards</p>
+                <p>i standardy nowoczesnego szpitalnictwa.</p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-5">
+                <a href="#rejestracja" class="bg-sky-600 text-white px-10 py-5 rounded-2xl font-bold text-xl hover:bg-sky-500 transition shadow-2xl shadow-sky-900/50 text-center">
+                    Weź udział w wydarzeniu
+                </a>
+                <a href="#program" class="glass-effect text-white px-10 py-5 rounded-2xl font-bold text-xl hover:bg-white/20 transition text-center border border-white/30">
+                    Zobacz program
+                </a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<!-- DALSZA TREŚĆ: EPHA, AGENDA, PARTNERZY, REJESTRACJA, STOPKA — BEZ ZMIAN -->
+
+<!-- PATCH: JS do menu -->
+<script>
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('mobileMenu');
+    btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+    menu.querySelectorAll('a').forEach(a =>
+        a.addEventListener('click', () => menu.classList.add('hidden'))
+    );
+</script>
 
     <!-- Sekcja EPHA & UEHP -->
     <section id="nagrody" class="py-24 bg-white relative overflow-hidden">
@@ -176,7 +215,6 @@
             </div>
 
             <div class="category-grid">
-                <!-- Kategorie (skrócone w tym widoku dla czytelności kodu) -->
                 <div class="flex items-start gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-100 card-hover">
                     <div class="text-sky-600 mt-1"><i class="fas fa-plus-circle text-lg"></i></div>
                     <div><h4 class="font-bold text-slate-800 leading-tight">Empowering Patient Care Experience</h4></div>
@@ -188,6 +226,26 @@
                 <div class="flex items-start gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-100 card-hover">
                     <div class="text-sky-600 mt-1"><i class="fas fa-plus-circle text-lg"></i></div>
                     <div><h4 class="font-bold text-slate-800 leading-tight">Innovation in Preventive Care</h4></div>
+                </div>
+                <div class="flex items-start gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-100 card-hover">
+                    <div class="text-sky-600 mt-1"><i class="fas fa-plus-circle text-lg"></i></div>
+                    <div><h4 class="font-bold text-slate-800 leading-tight">Excellence in Professional Development</h4></div>
+                </div>
+                <div class="flex items-start gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-100 card-hover">
+                    <div class="text-sky-600 mt-1"><i class="fas fa-plus-circle text-lg"></i></div>
+                    <div><h4 class="font-bold text-slate-800 leading-tight text-[0.95rem]">Excellence in Public-Private Partnerships & Collaboration</h4></div>
+                </div>
+                <div class="flex items-start gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-100 card-hover">
+                    <div class="text-sky-600 mt-1"><i class="fas fa-plus-circle text-lg"></i></div>
+                    <div><h4 class="font-bold text-slate-800 leading-tight">Healthcare Resilience and Crisis Management</h4></div>
+                </div>
+                <div class="flex items-start gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-100 card-hover">
+                    <div class="text-sky-600 mt-1"><i class="fas fa-plus-circle text-lg"></i></div>
+                    <div><h4 class="font-bold text-slate-800 leading-tight">Best Integration of AI in Healthcare</h4></div>
+                </div>
+                <div class="flex items-start gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-100 card-hover">
+                    <div class="text-sky-600 mt-1"><i class="fas fa-plus-circle text-lg"></i></div>
+                    <div><h4 class="font-bold text-slate-800 leading-tight">Sustainable and Green Practices in Hospitals</h4></div>
                 </div>
             </div>
         </div>
@@ -208,7 +266,7 @@
                         <div class="flex items-center gap-6">
                             <span class="w-12 h-12 bg-sky-100 text-sky-600 rounded-2xl flex items-center justify-center font-bold">I</span>
                             <div>
-                                <h3 class="text-xl font-bold text-slate-800 tracking-tight">EPHA: Prezentacja Laureatów i Prekwalifikacje PL 2026</h3>
+                                <h3 class="text-xl font-bold text-slate-800 tracking-tight">EPHA: Prezentacja Laureatów i konsultacje PL 2026</h3>
                                 <p class="text-sm text-slate-400">09:30 - 11:00</p>
                             </div>
                         </div>
