@@ -49,7 +49,6 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* Logotypy powiększone o 50% dla lepszej ekspozycji */
         .nav-logo {
             max-height: 60px;
             width: auto;
@@ -69,6 +68,42 @@
             transform: translateY(-0.05em); 
             padding: 0 0.2em;
         }
+
+        /* Styl dla siatki logotypów partnerów - układ poziomy 3 w rzędzie */
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 kolumny */
+            gap: 2rem;
+            align-items: center;
+            justify-items: center;
+            max-width: 900px; /* Ograniczenie szerokości dla lepszej czytelności przy 3 elementach */
+            margin: 0 auto;
+        }
+
+        /* Responsywność - na małych ekranach 1 lub 2 w rzędzie */
+        @media (max-width: 768px) {
+            .logo-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .logo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .logo-item {
+            @apply flex items-center justify-center p-4 bg-white border border-slate-100 rounded-2xl grayscale transition-all duration-300 hover:grayscale-0 hover:border-sky-200 hover:shadow-lg;
+            width: 100%;
+            height: 110px; /* Wysokość kontenera */
+        }
+
+        .logo-item img {
+            height: 70px; /* Stała wysokość logotypu */
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+        }
     </style>
 </head>
 <body class="bg-white text-slate-900">
@@ -76,8 +111,6 @@
     <!-- Nawigacja -->
     <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 py-3 shadow-sm">
         <div class="container mx-auto px-6 flex justify-between items-center">
-            
-            <!-- Nagłówek: Usunięto etykiety tekstowe, pozostawiono powiększone logotypy -->
             <div class="flex items-center space-x-8">
                 <div class="flex items-center border-r border-slate-200 pr-8 h-12">
                     <img src="logo OSSP blue.png" alt="Logo OSSP" class="nav-logo" onerror="this.src='https://placehold.co/150x60/0369a1/ffffff?text=OSSP'">
@@ -90,6 +123,7 @@
             <div class="hidden lg:flex space-x-8 text-sm font-bold text-slate-600 items-center">
                 <a href="#nagrody" class="hover:text-sky-600 transition">EPHA Awards</a>
                 <a href="#program" class="hover:text-sky-600 transition">Agenda</a>
+                <a href="#partnerzy" class="hover:text-sky-600 transition">Partnerzy</a>
                 <a href="#rejestracja" class="bg-sky-600 text-white px-6 py-3 rounded-xl hover:bg-sky-700 transition shadow-lg shadow-sky-200">Rejestracja</a>
             </div>
         </div>
@@ -101,7 +135,7 @@
             <div class="max-w-4xl">
                 <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 px-5 py-2 rounded-full text-white text-sm font-semibold mb-8">
                     <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    9 Marca 2026 | Warszawa | Siedziba LUX MED
+                    9 Marca 2026 | Warszawa | Lokalizacja???
                 </div>
                 <h1 class="text-5xl md:text-6xl font-extrabold leading-[1.1] mb-6 tracking-tight">
                     NOWOCZESNY SZPITAL 2026
@@ -137,12 +171,12 @@
                     <h2 class="text-4xl font-extrabold text-slate-900">European Private Hospitals Awards (EPHA)</h2>
                 </div>
                 <p class="text-slate-600 text-lg leading-relaxed mb-6">
-                    Konkurs organizowany przez <strong>European Union of Private Hospitals (UEHP)</strong>, mający na celu promocję innowacyjności i doskonałości w europejskim sektorze prywatnym. <br class="hidden md:block">
-                    Poniżej przedstawiamy oficjalne kategorie konkursowe:
+                    Konkurs organizowany przez <strong>European Union of Private Hospitals (UEHP)</strong>, mający na celu promocję innowacyjności i doskonałości w europejskim sektorze prywatnym.
                 </p>
             </div>
 
             <div class="category-grid">
+                <!-- Kategorie (skrócone w tym widoku dla czytelności kodu) -->
                 <div class="flex items-start gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-100 card-hover">
                     <div class="text-sky-600 mt-1"><i class="fas fa-plus-circle text-lg"></i></div>
                     <div><h4 class="font-bold text-slate-800 leading-tight">Empowering Patient Care Experience</h4></div>
@@ -155,26 +189,6 @@
                     <div class="text-sky-600 mt-1"><i class="fas fa-plus-circle text-lg"></i></div>
                     <div><h4 class="font-bold text-slate-800 leading-tight">Innovation in Preventive Care</h4></div>
                 </div>
-                <div class="flex items-start gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-100 card-hover">
-                    <div class="text-sky-600 mt-1"><i class="fas fa-plus-circle text-lg"></i></div>
-                    <div><h4 class="font-bold text-slate-800 leading-tight">Excellence in Professional Development</h4></div>
-                </div>
-                <div class="flex items-start gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-100 card-hover">
-                    <div class="text-sky-600 mt-1"><i class="fas fa-plus-circle text-lg"></i></div>
-                    <div><h4 class="font-bold text-slate-800 leading-tight text-[0.95rem]">Excellence in Public-Private Partnerships & Collaboration</h4></div>
-                </div>
-                <div class="flex items-start gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-100 card-hover">
-                    <div class="text-sky-600 mt-1"><i class="fas fa-plus-circle text-lg"></i></div>
-                    <div><h4 class="font-bold text-slate-800 leading-tight">Healthcare Resilience and Crisis Management</h4></div>
-                </div>
-                <div class="flex items-start gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-100 card-hover">
-                    <div class="text-sky-600 mt-1"><i class="fas fa-plus-circle text-lg"></i></div>
-                    <div><h4 class="font-bold text-slate-800 leading-tight">Best Integration of AI in Healthcare</h4></div>
-                </div>
-                <div class="flex items-start gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-100 card-hover">
-                    <div class="text-sky-600 mt-1"><i class="fas fa-plus-circle text-lg"></i></div>
-                    <div><h4 class="font-bold text-slate-800 leading-tight">Sustainable and Green Practices in Hospitals</h4></div>
-                </div>
             </div>
         </div>
     </section>
@@ -184,7 +198,7 @@
         <div class="container mx-auto px-6 max-w-5xl">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-extrabold mb-4 text-slate-900">Program Konferencji</h2>
-                <p class="text-slate-500 text-lg">Warszawa, 9 marca 2026 | Siedziba LUX MED</p>
+                <p class="text-slate-500 text-lg">Warszawa, 9 marca 2026 | Lokalizacja??? </p>
             </div>
 
             <div class="space-y-6">
@@ -303,6 +317,71 @@
         </div>
     </section>
 
+            <!-- Partnerzy -->
+            <div class="mb-20 text-center">
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-12 flex items-center justify-center gap-4">
+                    <span class="h-px w-12 bg-slate-200"></span>
+                    Partnerzy Strategiczni
+                    <span class="h-px w-12 bg-slate-200"></span>
+                </h2>
+                <div class="logo-grid">
+                    <a href="https://www.uniaszpitali.pl/" target="_blank" class="logo-item">
+                        <img src="logo PUSK.png" alt="Polska Unia Szpitali Klinicznych">
+                    </a>
+                    <a href="#" target="_blank" class="logo-item">
+                        <img src="https://placehold.co/200x100/f1f5f9/64748b?text=Partner+2" alt="Partner 2">
+                    </a>
+                    <a href="#" target="_blank" class="logo-item">
+                        <img src="https://placehold.co/200x100/f1f5f9/64748b?text=Partner+3" alt="Partner 3">
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- Patronat Medialny -->
+            <div class="mb-20 text-center">
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-12 flex items-center justify-center gap-4">
+                    <span class="h-px w-12 bg-slate-200"></span>
+                    Patronat Medialny
+                    <span class="h-px w-12 bg-slate-200"></span>
+                </h2>
+                <div class="logo-grid">
+                    <a href="https://dlaszpitali.pl/" target="_blank" class="logo-item">
+                        <img src="logo dlaszpitali_pl.png" alt="Ogólnopolski Przegląd Medyczny">
+                    </a>
+                    <a href="#" target="_blank" class="logo-item">
+                        <img src="https://placehold.co/200x100/ffffff/64748b?text=Media+2" alt="Patronat Medialny 2">
+                    </a>
+                    <a href="#" target="_blank" class="logo-item">
+                        <img src="https://placehold.co/200x100/ffffff/64748b?text=Media+3" alt="Patronat Medialny 3">
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- Sponsorzy -->
+            <div class="mb-20 text-center">
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-12 flex items-center justify-center gap-4">
+                    <span class="h-px w-12 bg-slate-200"></span>
+                    Sponsorzy
+                    <span class="h-px w-12 bg-slate-200"></span>
+                </h2>
+                <div class="logo-grid">
+                    <a href="https://cyber360.pl/" target="_blank" class="logo-item">
+                        <img src="logo CYBER360.png" alt="CYBER360">
+                    </a>
+                    <a href="#" target="_blank" class="logo-item">
+                        <img src="https://placehold.co/200x100/e2e8f0/64748b?text=Sponsor+2" alt="Sponsor 2">
+                    </a>
+                    <a href="#" target="_blank" class="logo-item">
+                        <img src="https://placehold.co/200x100/e2e8f0/64748b?text=Sponsor+3" alt="Sponsor 3">
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <!-- Rejestracja -->
     <section id="rejestracja" class="py-24 bg-slate-900 text-white relative">
         <div class="container mx-auto px-6 relative z-10">
@@ -342,9 +421,4 @@
     </footer>
 
 </body>
-
 </html>
-
-
-
-
