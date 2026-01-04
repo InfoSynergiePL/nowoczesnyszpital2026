@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOWOCZESNY SZPITAL 2026 - Konferencja OSSP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .hero-bg {
+            position: relative;
+            background-color: #0f172a;
+            background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.7)), 
+                              url('https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=2000'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: linear-gradient(to top, #ffffff, transparent);
+            pointer-events: none;
+        }
+        
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-logo {
+            max-height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .plus-icon {
+            font-size: 1.1em; 
+            line-height: 1;
+            display: inline-block;
+            transform: translateY(-0.05em); 
+            padding: 0 0.2em;
+        }
+
+        /* Styl dla siatki logotypów partnerów - układ poziomy 3 w rzędzie */
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 kolumny */
+            gap: 2rem;
+            align-items: center;
+            justify-items: center;
+            max-width: 900px; /* Ograniczenie szerokości dla lepszej czytelności przy 3 elementach */
+            margin: 0 auto;
+        }
+
+        /* Responsywność - na małych ekranach 1 lub 2 w rzędzie */
+        @media (max-width: 768px) {
+            .logo-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .logo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .logo-item {
+            @apply flex items-center justify-center p-4 bg-white border border-slate-100 rounded-2xl grayscale transition-all duration-300 hover:grayscale-0 hover:border-sky-200 hover:shadow-lg;
+            width: 100%;
+            height: 110px; /* Wysokość kontenera */
+        }
+
+        .logo-item img {
+            height: 70px; /* Stała wysokość logotypu */
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+
+    <!-- Nawigacja -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 py-3 shadow-sm">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center space-x-8">
+                <div class="flex items-center border-r border-slate-200 pr-8 h-12">
+                    <img src="logo OSSP blue.png" alt="Logo OSSP" class="nav-logo" onerror="this.src='https://placehold.co/150x60/0369a1/ffffff?text=OSSP'">
+                </div>
+                <div class="flex items-center h-12">
+                    <img src="logo UEHP.png" alt="Logo UEHP" class="nav-logo" onerror="this.src='https://placehold.co/150x60/1e3a8a/ffffff?text=UEHP'">
+                </div>
+            </div>
+
+            <div class="hidden lg:flex space-x-8 text-sm font-bold text-slate-600 items-center">
+                <a href="#nagrody" class="hover:text-sky-600 transition">EPHA Awards</a>
+                <a href="#program" class="hover:text-sky-600 transition">Agenda</a>
+                <a href="#partnerzy" class="hover:text-sky-600 transition">Partnerzy</a>
+                <a href="#rejestracja" class="bg-sky-600 text-white px-6 py-3 rounded-xl hover:bg-sky-700 transition shadow-lg shadow-sky-200">Rejestracja</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center pt-20 hero-bg text-white">
+        <div class="container mx-auto px-6 relative z-10 text-center md:text-left">
+            <div class="max-w-4xl">
+                <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 px-5 py-2 rounded-full text-white text-sm font-semibold mb-8">
+                    <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    9 Marca 2026 | Warszawa | Lokalizacja???
+                </div>
+                <h1 class="text-5xl md:text-6xl font-extrabold leading-[1.1] mb-6 tracking-tight">
+                    NOWOCZESNY SZPITAL 2026
+                </h1>
+                <h2 class="text-xl md:text-4xl font-bold text-sky-400 mb-12 tracking-wide uppercase">
+                    INNOWACYJNY <span class="plus-icon text-white">+</span> EFEKTYWNY <span class="plus-icon text-white">+</span> BEZPIECZNY
+                </h2>
+                <div class="text-slate-200 text-xl md:text-2xl mb-12 max-w-3xl leading-snug font-light">
+                    <p class="mb-1">Najważniejsze spotkanie innowacyjnych szpitali prywatnych.</p>
+                    <p class="mb-1">Poznaj laureatów European Private Hospitals Awards</p>
+                    <p>i standardy nowoczesnego szpitalnictwa.</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-5">
+                    <a href="#rejestracja" class="bg-sky-600 text-white px-10 py-5 rounded-2xl font-bold text-xl hover:bg-sky-500 transition shadow-2xl shadow-sky-900/50 text-center">
+                        Weź udział w wydarzeniu
+                    </a>
+                    <a href="#program" class="glass-effect text-white px-10 py-5 rounded-2xl font-bold text-xl hover:bg-white/20 transition text-center border border-white/30">
+                        Zobacz program
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcja EPHA & UEHP -->
+    <section id="nagrody" class="py-24 bg-white relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mb-16">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-16 h-16 bg-blue-50 p-2 rounded-xl flex items-center justify-center">
+                        <img src="logo UEHP.png" alt="UEHP Logo" class="rounded-lg shadow-sm" onerror="this.src='https://placehold.co/100x100/1e3a8a/ffffff?text=UEHP'">
+                    </div>
+                    <h2 class="text-4xl font-extrabold text-slate-900">European Private Hospitals Awards (EPHA)</h2>
+                </div>
+                <p class="text-slate-600 text-lg leading-relaxed mb-6">
+                    Konkurs organizowany przez <strong>European Union of Private Hospitals (UEHP)</strong>, mający na celu promocję innowacyjności i doskonałości w europejskim sektorze prywatnym.
+                </p>
+            </div>
+
+            <div class="category-grid">
+                <!-- Kategorie (skrócone w tym widoku dla czytelności kodu) -->
+                <div class="flex items-start gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-100 card-hover">
+                    <div class="text-sky-600 mt-1"><i class="fas fa-plus-circle text-lg"></i></div>
+                    <div><h4 class="font-bold text-slate-800 leading-tight">Empowering Patient Care Experience</h4></div>
+                </div>
+                <div class="flex items-start gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-100 card-hover">
+                    <div class="text-sky-600 mt-1"><i class="fas fa-plus-circle text-lg"></i></div>
+                    <div><h4 class="font-bold text-slate-800 leading-tight">Excellence in Health Tech Innovation</h4></div>
+                </div>
+                <div class="flex items-start gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-100 card-hover">
+                    <div class="text-sky-600 mt-1"><i class="fas fa-plus-circle text-lg"></i></div>
+                    <div><h4 class="font-bold text-slate-800 leading-tight">Innovation in Preventive Care</h4></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Agenda -->
+    <section id="program" class="py-24 bg-slate-50">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-extrabold mb-4 text-slate-900">Program Konferencji</h2>
+                <p class="text-slate-500 text-lg">Warszawa, 9 marca 2026 | Lokalizacja??? </p>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Blok I -->
+                <details class="group bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden" open>
+                    <summary class="flex justify-between items-center p-8 cursor-pointer list-none">
+                        <div class="flex items-center gap-6">
+                            <span class="w-12 h-12 bg-sky-100 text-sky-600 rounded-2xl flex items-center justify-center font-bold">I</span>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 tracking-tight">EPHA: Prezentacja Laureatów i Prekwalifikacje PL 2026</h3>
+                                <p class="text-sm text-slate-400">09:30 - 11:00</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-down text-slate-300 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div class="px-8 pb-8 pt-0 text-slate-600 border-t border-slate-50">
+                        <div class="p-4 space-y-4">
+                            <p class="leading-relaxed">Panel poświęcony sukcesom polskich placówek w poprzednich edycjach European Private Hospitals Awards oraz wsparciu OSSP dla polskich szpitali startujących w edycji 2026.</p>
+                            <ul class="space-y-2 text-sm ml-4 list-disc">
+                                <li>Prezentacja najlepszych praktyk laureatów EPHA 2025.</li>
+                                <li>Kryteria oceny i wymagane standardy.</li>
+                                <li>Jak polskie szpitale prywatne mogą konkurować na rynku europejskim?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Blok II -->
+                <details class="group bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+                    <summary class="flex justify-between items-center p-8 cursor-pointer list-none">
+                        <div class="flex items-center gap-6">
+                            <span class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center font-bold">II</span>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 tracking-tight">Synergia Publiczno-Prywatna w Opiece Medycznej</h3>
+                                <p class="text-sm text-slate-400">11:15 - 12:45</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-down text-slate-300 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div class="px-8 pb-8 pt-0 text-slate-600 border-t border-slate-50">
+                        <div class="p-4 space-y-4">
+                            <p class="font-semibold text-slate-800">Debata: Modele współpracy i współfinansowania.</p>
+                            <ul class="space-y-2 text-sm ml-4 list-disc">
+                                <li>Współpraca szpitali klinicznych z sektorem prywatnym – doświadczenia UCK GUMed.</li>
+                                <li>Regionalne Centra Medycyny Cyfrowej i rola ABM w rozwoju innowacji.</li>
+                                <li>Partnerstwa technologiczne jako motor napędowy efektywności.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Blok III -->
+                <details class="group bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+                    <summary class="flex justify-between items-center p-8 cursor-pointer list-none">
+                        <div class="flex items-center gap-6">
+                            <span class="w-12 h-12 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center font-bold">III</span>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 tracking-tight">Digital Health: Współpraca z firmami z sektora MedTech</h3>
+                                <p class="text-sm text-slate-400">13:30 - 15:00</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-down text-slate-300 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div class="px-8 pb-8 pt-0 text-slate-600 border-t border-slate-50">
+                        <div class="p-4 space-y-4">
+                            <p class="leading-relaxed">Przegląd najnowszych rozwiązań technologicznych wspierających kadrę medyczną i proces leczenia pacjenta.</p>
+                            <ul class="space-y-3">
+                                <li class="flex gap-4">
+                                    <i class="fas fa-robot text-sky-500 mt-1"></i>
+                                    <div>
+                                        <span class="block font-bold text-slate-800">Sztuczna Inteligencja w Diagnostyce</span>
+                                        <span class="text-sm">Zastosowania AI w radiologii i patomorfologii – realne korzyści dla szpitali.</span>
+                                    </div>
+                                </li>
+                                <li class="flex gap-4">
+                                    <i class="fas fa-mobile-alt text-sky-500 mt-1"></i>
+                                    <div>
+                                        <span class="block font-bold text-slate-800">Ekosystemy Cyfrowe</span>
+                                        <span class="text-sm">Integracja danych medycznych i rozwiąznia wspierające pacjentów.</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Blok IV -->
+                <details class="group bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+                    <summary class="flex justify-between items-center p-8 cursor-pointer list-none">
+                        <div class="flex items-center gap-6">
+                            <span class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center font-bold">IV</span>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 tracking-tight">Cybersecurity: Premiera publikacji CyberManual OSSP</h3>
+                                <p class="text-sm text-slate-400">15:15 - 16:30</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-down text-slate-300 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div class="px-8 pb-8 pt-0 text-slate-600 border-t border-slate-50">
+                        <div class="p-4 space-y-4">
+                            <div class="mb-4 p-5 bg-sky-50 rounded-2xl border border-sky-100">
+                                <span class="inline-block px-3 py-1 bg-sky-600 text-white text-[10px] font-bold rounded-full mb-3 uppercase tracking-wider">Premiera</span>
+                                <h4 class="text-lg font-bold text-slate-900 mb-2">CyberManual OSSP 2026</h4>
+                                <p class="text-sm text-slate-600 leading-relaxed">Pierwszy tak kompleksowy przewodnik dedykowany przede wszystkim personelowi medycznemu i niemedycznemu oraz kadrze zarządzającej szpitali. Standardy ochrony danych i procedury reagowania na incydenty.</p>
+                            </div>
+                            <ul class="space-y-2 text-sm ml-4 list-disc">
+                                <li>Ochrona przed atakami typu Ransomware.</li>
+                                <li>Sposób postepowania w przypadku ataku.</li>
+                                <li>Zarządzanie uprawnieniami i bezpieczeństwo pracy zdalnej lekarzy.</li>
+                                <li>Aspekty prawne i ubezpieczeniowe ryzyk cyfrowych.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+            <!-- Partnerzy -->
+            <div class="mb-20 text-center">
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-12 flex items-center justify-center gap-4">
+                    <span class="h-px w-12 bg-slate-200"></span>
+                    Partnerzy Strategiczni
+                    <span class="h-px w-12 bg-slate-200"></span>
+                </h2>
+                <div class="logo-grid">
+                    <a href="https://www.uniaszpitali.pl/" target="_blank" class="logo-item">
+                        <img src="logo PUSK.png" alt="Polska Unia Szpitali Klinicznych">
+                    </a>
+                    <a href="#" target="_blank" class="logo-item">
+                        <img src="https://placehold.co/200x100/f1f5f9/64748b?text=Partner+2" alt="Partner 2">
+                    </a>
+                    <a href="#" target="_blank" class="logo-item">
+                        <img src="https://placehold.co/200x100/f1f5f9/64748b?text=Partner+3" alt="Partner 3">
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- Patronat Medialny -->
+            <div class="mb-20 text-center">
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-12 flex items-center justify-center gap-4">
+                    <span class="h-px w-12 bg-slate-200"></span>
+                    Patronat Medialny
+                    <span class="h-px w-12 bg-slate-200"></span>
+                </h2>
+                <div class="logo-grid">
+                    <a href="https://dlaszpitali.pl/" target="_blank" class="logo-item">
+                        <img src="logo dlaszpitali_pl.png" alt="Ogólnopolski Przegląd Medyczny">
+                    </a>
+                    <a href="#" target="_blank" class="logo-item">
+                        <img src="https://placehold.co/200x100/ffffff/64748b?text=Media+2" alt="Patronat Medialny 2">
+                    </a>
+                    <a href="#" target="_blank" class="logo-item">
+                        <img src="https://placehold.co/200x100/ffffff/64748b?text=Media+3" alt="Patronat Medialny 3">
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- Sponsorzy -->
+            <div class="mb-20 text-center">
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-12 flex items-center justify-center gap-4">
+                    <span class="h-px w-12 bg-slate-200"></span>
+                    Sponsorzy
+                    <span class="h-px w-12 bg-slate-200"></span>
+                </h2>
+                <div class="logo-grid">
+                    <a href="https://cyber360.pl/" target="_blank" class="logo-item">
+                        <img src="logo CYBER360.png" alt="CYBER360">
+                    </a>
+                    <a href="#" target="_blank" class="logo-item">
+                        <img src="https://placehold.co/200x100/e2e8f0/64748b?text=Sponsor+2" alt="Sponsor 2">
+                    </a>
+                    <a href="#" target="_blank" class="logo-item">
+                        <img src="https://placehold.co/200x100/e2e8f0/64748b?text=Sponsor+3" alt="Sponsor 3">
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Rejestracja -->
+    <section id="rejestracja" class="py-24 bg-slate-900 text-white relative">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl mx-auto bg-gradient-to-br from-slate-800 to-slate-900 rounded-[2.5rem] p-12 md:p-16 border border-slate-700 shadow-2xl">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-extrabold mb-4 text-white">Zarejestruj się</h2>
+                    <p class="text-slate-400">Zapewnij sobie miejsce na najważniejszym wydarzeniu branżowym roku.</p>
+                </div>
+                
+                <form class="grid md:grid-cols-2 gap-6">
+                    <input type="text" placeholder="Imię i Nazwisko" class="w-full px-6 py-4 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-sky-500 transition">
+                    <input type="email" placeholder="Adres Email" class="w-full px-6 py-4 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-sky-500 transition">
+                    <div class="md:col-span-2">
+                        <input type="text" placeholder="Nazwa Szpitala / Organizacji" class="w-full px-6 py-4 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-sky-500 transition">
+                    </div>
+                    <button type="button" class="md:col-span-2 bg-sky-600 text-white font-bold py-5 rounded-xl hover:bg-sky-500 transition shadow-xl shadow-sky-900/40">
+                        Wyślij zgłoszenie
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stopka -->
+    <footer class="bg-slate-950 py-12 text-slate-500 border-t border-slate-900">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+            <div class="flex items-center gap-8">
+                <div class="flex items-center gap-2">
+                    <img src="logo OSSP blue.png" alt="Logo OSSP" class="h-6 opacity-70" onerror="this.src='https://placehold.co/80x30/0369a1/ffffff?text=OSSP'">
+                </div>
+                <div class="flex items-center gap-2">
+                    <img src="logo UEHP.png" alt="Logo UEHP" class="h-6 opacity-70" onerror="this.src='https://placehold.co/80x30/1e3a8a/ffffff?text=UEHP'">
+                </div>
+            </div>
+            <p class="text-xs">&copy; 2026 Ogólnopolskie Stowarzyszenie Szpitali Prywatnych</p>
+        </div>
+    </footer>
+
+</body>
+</html>
