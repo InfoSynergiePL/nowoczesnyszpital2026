@@ -77,17 +77,37 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            align-items: center;
-            justify-items: center;
             max-width: 900px;
             margin: 0 auto;
         }
 
-        @media (max-width: 768px) {
-            .logo-grid { grid-template-columns: repeat(2, 1fr); }
+        /* KAŻDA KOMÓRKA LOGO */
+        .logo-grid > div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 3 / 2;      /* równe pola */
         }
+
+        /* SAME LOGOTYPY */
+        .logo-grid img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;      /* brak rozciągania */
+        }
+
+        /* TABLET */
+        @media (max-width: 768px) {
+            .logo-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* MOBILE */
         @media (max-width: 480px) {
-            .logo-grid { grid-template-columns: 1fr; }
+            .logo-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .logo-item {
@@ -786,6 +806,7 @@
 
 </body>
 </html>
+
 
 
 
