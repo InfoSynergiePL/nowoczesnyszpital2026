@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NOWOCZESNY SZPITAL 2026 - Konferencja OSSP</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
         
@@ -14,7 +16,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Animacja pojawiania się komunikatu sukcesu */
+        /* --- Animacje --- */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -23,7 +25,7 @@
             animation: fadeIn 0.5s ease-out forwards;
         }
 
-        /* PATCH: Chrome mobile fix */
+        /* --- Tło Hero (Fix dla mobilnego Chrome) --- */
         .hero-bg {
             position: relative;
             background-color: #0f172a;
@@ -48,6 +50,7 @@
             pointer-events: none;
         }
         
+        /* --- Style Kart i Efekty --- */
         .card-hover {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -82,6 +85,7 @@
             padding: 0 0.2em;
         }
 
+        /* --- Grid Logotypów --- */
         .logo-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -90,35 +94,34 @@
             margin: 0 auto;
         }
 
-        /* KAŻDA KOMÓRKA LOGO */
+        /* Kontener logotypu */
         .logo-grid > div {
             display: flex;
             align-items: center;
             justify-content: center;
-            aspect-ratio: 3 / 2;      /* równe pola */
+            aspect-ratio: 3 / 2;
         }
 
-        /* SAME LOGOTYPY */
+        /* Obrazki logotypów */
         .logo-grid img {
             max-width: 100%;
             max-height: 100%;
-            object-fit: contain;      /* brak rozciągania */
+            object-fit: contain;
         }
 
-        /* TABLET */
+        /* Responsywność logotypów */
         @media (max-width: 768px) {
             .logo-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
-
-        /* MOBILE */
         @media (max-width: 480px) {
             .logo-grid {
                 grid-template-columns: 1fr;
             }
         }
 
+        /* Kafelki logotypów */
         .logo-item {
             width: 100%;
             height: 110px;
@@ -148,77 +151,80 @@
 </head>
 <body class="bg-white text-slate-900">
 
-<nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 py-3 shadow-sm">
-    <div class="container mx-auto px-6 flex justify-between items-center">
-        <div class="flex items-center space-x-8">
-            <div class="flex items-center border-r border-slate-200 pr-8 h-12">
-                <img src="logo OSSP blue.png" alt="Logo OSSP" class="nav-logo" onerror="this.src='https://placehold.co/150x60/0369a1/ffffff?text=OSSP'">
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 py-3 shadow-sm">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center space-x-8">
+                <div class="flex items-center border-r border-slate-200 pr-8 h-12">
+                    <img src="logo OSSP blue.png" alt="Logo OSSP" class="nav-logo" onerror="this.src='https://placehold.co/150x60/0369a1/ffffff?text=OSSP'">
+                </div>
+                <div class="flex items-center h-12">
+                    <img src="logo UEHP.png" alt="Logo UEHP" class="nav-logo" onerror="this.src='https://placehold.co/150x60/1e3a8a/ffffff?text=UEHP'">
+                </div>
             </div>
-            <div class="flex items-center h-12">
-                <img src="logo UEHP.png" alt="Logo UEHP" class="nav-logo" onerror="this.src='https://placehold.co/150x60/1e3a8a/ffffff?text=UEHP'">
-            </div>
-        </div>
 
-        <button id="menuBtn" class="lg:hidden text-2xl text-slate-700">
-            <i class="fas fa-bars"></i>
-        </button>
+            <button id="menuBtn" class="lg:hidden text-2xl text-slate-700">
+                <i class="fas fa-bars"></i>
+            </button>
 
-        <div class="hidden lg:flex space-x-8 text-sm font-bold text-slate-600 items-center">
-            <a href="#nagrody" class="hover:text-sky-600 transition">EPHA Awards</a>
-            <a href="#program" class="hover:text-sky-600 transition">Agenda</a>
-            <a href="#partnerzy" class="hover:text-sky-600 transition">Partnerzy</a>
-            <a href="#rejestracja" class="bg-sky-600 text-white px-6 py-3 rounded-xl hover:bg-sky-700 transition shadow-lg shadow-sky-200">Rejestracja</a>
-        </div>
-    </div>
-</nav>
-
-<div id="mobileMenu" class="hidden fixed top-[72px] left-0 right-0 z-40 bg-white border-b shadow-lg lg:hidden">
-    <div class="flex flex-col px-6 py-4 gap-4 font-bold text-slate-700">
-        <a href="#nagrody">EPHA Awards</a>
-        <a href="#program">Agenda</a>
-        <a href="#partnerzy">Partnerzy</a>
-        <a href="#rejestracja" class="bg-sky-600 text-white px-6 py-3 rounded-xl text-center">Rejestracja</a>
-    </div>
-</div>
-
-<section class="relative min-h-[90vh] flex items-center pt-20 hero-bg text-white">
-    <div class="container mx-auto px-6 relative z-10 text-center md:text-left">
-        <div class="max-w-4xl">
-            <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 px-5 py-2 rounded-full text-white text-sm font-semibold mb-8">
-                <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                9 Marca 2026 | Warszawa | Centrum Biznesowe Q22 (Deloitte) al. Jana Pawła II 22
-            </div>
-            <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-[1.1] mb-6 tracking-tight">
-                NOWOCZESNY  SZPITAL  2026
-            </h1>
-            <h2 class="text-lg sm:text-xl md:text-4xl font-bold text-sky-400 mb-12 tracking-wide uppercase">
-                INNOWACYJNY <span class="plus-icon text-white">+</span> EFEKTYWNY <span class="plus-icon text-white">+</span> BEZPIECZNY
-            </h2>
-            <div class="text-slate-200 text-xl md:text-2xl mb-12 max-w-3xl leading-snug font-light">
-                <p class="mb-1">Najważniejsze spotkanie innowacyjnych szpitali prywatnych.</p>
-                <p class="mb-1">Poznaj laureatów European Private Hospitals Awards</p>
-                <p>i standardy nowoczesnego szpitalnictwa.</p>
-            </div>
-            <div class="flex flex-col sm:flex-row gap-5">
-                <a href="#rejestracja" class="bg-sky-600 text-white px-10 py-5 rounded-2xl font-bold text-xl hover:bg-sky-500 transition shadow-2xl shadow-sky-900/50 text-center">
-                    Weź udział w wydarzeniu
-                </a>
-                <a href="#program" class="glass-effect text-white px-10 py-5 rounded-2xl font-bold text-xl hover:bg-white/20 transition text-center border border-white/30">
-                    Zobacz program
-                </a>
+            <div class="hidden lg:flex space-x-8 text-sm font-bold text-slate-600 items-center">
+                <a href="#nagrody" class="hover:text-sky-600 transition">EPHA Awards</a>
+                <a href="#program" class="hover:text-sky-600 transition">Agenda</a>
+                <a href="#partnerzy" class="hover:text-sky-600 transition">Partnerzy</a>
+                <a href="#rejestracja" class="bg-sky-600 text-white px-6 py-3 rounded-xl hover:bg-sky-700 transition shadow-lg shadow-sky-200">Rejestracja</a>
             </div>
         </div>
-    </div>
-</section>
+    </nav>
 
-<script>
-    const btn = document.getElementById('menuBtn');
-    const menu = document.getElementById('mobileMenu');
-    btn.addEventListener('click', () => menu.classList.toggle('hidden'));
-    menu.querySelectorAll('a').forEach(a =>
-        a.addEventListener('click', () => menu.classList.add('hidden'))
-    );
-</script>
+    <div id="mobileMenu" class="hidden fixed top-[72px] left-0 right-0 z-40 bg-white border-b shadow-lg lg:hidden">
+        <div class="flex flex-col px-6 py-4 gap-4 font-bold text-slate-700">
+            <a href="#nagrody">EPHA Awards</a>
+            <a href="#program">Agenda</a>
+            <a href="#partnerzy">Partnerzy</a>
+            <a href="#rejestracja" class="bg-sky-600 text-white px-6 py-3 rounded-xl text-center">Rejestracja</a>
+        </div>
+    </div>
+
+    <section class="relative min-h-[90vh] flex items-center pt-20 hero-bg text-white">
+        <div class="container mx-auto px-6 relative z-10 text-center md:text-left">
+            <div class="max-w-4xl">
+                <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 px-5 py-2 rounded-full text-white text-sm font-semibold mb-8">
+                    <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    9 Marca 2026 | Warszawa | Centrum Biznesowe Q22 (Deloitte) al. Jana Pawła II 22
+                </div>
+                
+                <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-[1.1] mb-6 tracking-tight">
+                    NOWOCZESNY  SZPITAL  2026
+                </h1>
+                <h2 class="text-lg sm:text-xl md:text-4xl font-bold text-sky-400 mb-12 tracking-wide uppercase">
+                    INNOWACYJNY <span class="plus-icon text-white">+</span> EFEKTYWNY <span class="plus-icon text-white">+</span> BEZPIECZNY
+                </h2>
+                
+                <div class="text-slate-200 text-xl md:text-2xl mb-12 max-w-3xl leading-snug font-light">
+                    <p class="mb-1">Najważniejsze spotkanie innowacyjnych szpitali prywatnych.</p>
+                    <p class="mb-1">Poznaj laureatów European Private Hospitals Awards</p>
+                    <p>i standardy nowoczesnego szpitalnictwa.</p>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-5">
+                    <a href="#rejestracja" class="bg-sky-600 text-white px-10 py-5 rounded-2xl font-bold text-xl hover:bg-sky-500 transition shadow-2xl shadow-sky-900/50 text-center">
+                        Weź udział w wydarzeniu
+                    </a>
+                    <a href="#program" class="glass-effect text-white px-10 py-5 rounded-2xl font-bold text-xl hover:bg-white/20 transition text-center border border-white/30">
+                        Zobacz program
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const btn = document.getElementById('menuBtn');
+        const menu = document.getElementById('mobileMenu');
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+        menu.querySelectorAll('a').forEach(a =>
+            a.addEventListener('click', () => menu.classList.add('hidden'))
+        );
+    </script>
 
     <section id="nagrody" class="py-24 bg-white relative overflow-hidden">
         <div class="container mx-auto px-6">
@@ -233,164 +239,133 @@
                     Konkurs organizowany przez <strong>European Union of Private Hospitals (UEHP)</strong>, mający na celu promocję innowacyjności i doskonałości w europejskim sektorze prywatnym.
                 </p>
                 <p class="text-slate-600 text-lg leading-relaxed mb-6">
-                    Nagrody są przyznawane w następujących kategoriach:</p>
-            </div>
-
-<div class="category-grid space-y-4">
-
-    <details class="group bg-slate-50 rounded-2xl border border-slate-100 card-hover p-5">
-        <summary class="flex items-start gap-4 cursor-pointer list-none">
-            <div class="text-sky-600 mt-1 transition-transform group-open:rotate-45">
-                <i class="fas fa-plus-circle text-lg"></i>
-            </div>
-            <div>
-                <h4 class="font-bold text-slate-800 leading-tight">
-                    Empowering Patient Care Experience
-                </h4>
-                <p class="text-sm text-slate-600">
-                    Wzmacnianie doświadczenia pacjenta w opiece zdrowotnej
+                    Nagrody są przyznawane w następujących kategoriach:
                 </p>
             </div>
-        </summary>
-        <p class="mt-3 text-sm text-slate-700">
-            Inicjatywy poprawiające doświadczenie pacjenta na każdym etapie leczenia – od pierwszego kontaktu po komfort, komunikację i satysfakcję z opieki.
-        </p>
-    </details>
 
-    <details class="group bg-slate-50 rounded-2xl border border-slate-100 card-hover p-5">
-        <summary class="flex items-start gap-4 cursor-pointer list-none">
-            <div class="text-sky-600 mt-1 transition-transform group-open:rotate-45">
-                <i class="fas fa-plus-circle text-lg"></i>
-            </div>
-            <div>
-                <h4 class="font-bold text-slate-800 leading-tight">
-                    Excellence in Health Tech Innovation
-                </h4>
-                <p class="text-sm text-slate-600">
-                    Doskonałość w innowacjach technologii medycznych
-                </p>
-            </div>
-        </summary>
-        <p class="mt-3 text-sm text-slate-700">
-            Nowatorskie wdrożenia technologiczne, które realnie usprawniają diagnostykę, leczenie lub zarządzanie placówką medyczną.
-        </p>
-    </details>
+            <div class="category-grid space-y-4">
 
-    <details class="group bg-slate-50 rounded-2xl border border-slate-100 card-hover p-5">
-        <summary class="flex items-start gap-4 cursor-pointer list-none">
-            <div class="text-sky-600 mt-1 transition-transform group-open:rotate-45">
-                <i class="fas fa-plus-circle text-lg"></i>
-            </div>
-            <div>
-                <h4 class="font-bold text-slate-800 leading-tight">
-                    Innovation in Preventive Care
-                </h4>
-                <p class="text-sm text-slate-600">
-                    Innowacje w opiece profilaktycznej
-                </p>
-            </div>
-        </summary>
-        <p class="mt-3 text-sm text-slate-700">
-            Programy i rozwiązania skupione na zapobieganiu chorobom, wczesnej diagnostyce i promocji zdrowego stylu życia.
-        </p>
-    </details>
+                <details class="group bg-slate-50 rounded-2xl border border-slate-100 card-hover p-5">
+                    <summary class="flex items-start gap-4 cursor-pointer list-none">
+                        <div class="text-sky-600 mt-1 transition-transform group-open:rotate-45">
+                            <i class="fas fa-plus-circle text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 leading-tight">Empowering Patient Care Experience</h4>
+                            <p class="text-sm text-slate-600">Wzmacnianie doświadczenia pacjenta w opiece zdrowotnej</p>
+                        </div>
+                    </summary>
+                    <p class="mt-3 text-sm text-slate-700">
+                        Inicjatywy poprawiające doświadczenie pacjenta na każdym etapie leczenia – od pierwszego kontaktu po komfort, komunikację i satysfakcję z opieki.
+                    </p>
+                </details>
 
-    <details class="group bg-slate-50 rounded-2xl border border-slate-100 card-hover p-5">
-        <summary class="flex items-start gap-4 cursor-pointer list-none">
-            <div class="text-sky-600 mt-1 transition-transform group-open:rotate-45">
-                <i class="fas fa-plus-circle text-lg"></i>
-            </div>
-            <div>
-                <h4 class="font-bold text-slate-800 leading-tight">
-                    Excellence in Professional Development
-                </h4>
-                <p class="text-sm text-slate-600">
-                    Doskonałość w rozwoju zawodowym
-                </p>
-            </div>
-        </summary>
-        <p class="mt-3 text-sm text-slate-700">
-            Działania wspierające rozwój kompetencji personelu medycznego poprzez szkolenia, edukację i ścieżki kariery.
-        </p>
-    </details>
+                <details class="group bg-slate-50 rounded-2xl border border-slate-100 card-hover p-5">
+                    <summary class="flex items-start gap-4 cursor-pointer list-none">
+                        <div class="text-sky-600 mt-1 transition-transform group-open:rotate-45">
+                            <i class="fas fa-plus-circle text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 leading-tight">Excellence in Health Tech Innovation</h4>
+                            <p class="text-sm text-slate-600">Doskonałość w innowacjach technologii medycznych</p>
+                        </div>
+                    </summary>
+                    <p class="mt-3 text-sm text-slate-700">
+                        Nowatorskie wdrożenia technologiczne, które realnie usprawniają diagnostykę, leczenie lub zarządzanie placówką medyczną.
+                    </p>
+                </details>
 
-    <details class="group bg-slate-50 rounded-2xl border border-slate-100 card-hover p-5">
-        <summary class="flex items-start gap-4 cursor-pointer list-none">
-            <div class="text-sky-600 mt-1 transition-transform group-open:rotate-45">
-                <i class="fas fa-plus-circle text-lg"></i>
-            </div>
-            <div>
-                <h4 class="font-bold text-slate-800 leading-tight text-[0.95rem]">
-                    Excellence in Public-Private Partnerships & Collaboration
-                </h4>
-                <p class="text-sm text-slate-600">
-                    Doskonałość we współpracy publiczno-prywatnej
-                </p>
-            </div>
-        </summary>
-        <p class="mt-3 text-sm text-slate-700">
-            Skuteczne partnerstwa i modele współpracy pomiędzy sektorem publicznym, prywatnym i organizacjami wspierającymi ochronę zdrowia.
-        </p>
-    </details>
+                <details class="group bg-slate-50 rounded-2xl border border-slate-100 card-hover p-5">
+                    <summary class="flex items-start gap-4 cursor-pointer list-none">
+                        <div class="text-sky-600 mt-1 transition-transform group-open:rotate-45">
+                            <i class="fas fa-plus-circle text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 leading-tight">Innovation in Preventive Care</h4>
+                            <p class="text-sm text-slate-600">Innowacje w opiece profilaktycznej</p>
+                        </div>
+                    </summary>
+                    <p class="mt-3 text-sm text-slate-700">
+                        Programy i rozwiązania skupione na zapobieganiu chorobom, wczesnej diagnostyce i promocji zdrowego stylu życia.
+                    </p>
+                </details>
 
-    <details class="group bg-slate-50 rounded-2xl border border-slate-100 card-hover p-5">
-        <summary class="flex items-start gap-4 cursor-pointer list-none">
-            <div class="text-sky-600 mt-1 transition-transform group-open:rotate-45">
-                <i class="fas fa-plus-circle text-lg"></i>
-            </div>
-            <div>
-                <h4 class="font-bold text-slate-800 leading-tight">
-                    Healthcare Resilience and Crisis Management
-                </h4>
-                <p class="text-sm text-slate-600">
-                    Odporność systemu ochrony zdrowia i zarządzanie kryzysowe
-                </p>
-            </div>
-        </summary>
-        <p class="mt-3 text-sm text-slate-700">
-            Zdolność placówki do skutecznego działania w sytuacjach kryzysowych, takich jak pandemie, katastrofy czy nagłe zakłócenia.
-        </p>
-    </details>
+                <details class="group bg-slate-50 rounded-2xl border border-slate-100 card-hover p-5">
+                    <summary class="flex items-start gap-4 cursor-pointer list-none">
+                        <div class="text-sky-600 mt-1 transition-transform group-open:rotate-45">
+                            <i class="fas fa-plus-circle text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 leading-tight">Excellence in Professional Development</h4>
+                            <p class="text-sm text-slate-600">Doskonałość w rozwoju zawodowym</p>
+                        </div>
+                    </summary>
+                    <p class="mt-3 text-sm text-slate-700">
+                        Działania wspierające rozwój kompetencji personelu medycznego poprzez szkolenia, edukację i ścieżki kariery.
+                    </p>
+                </details>
 
-    <details class="group bg-slate-50 rounded-2xl border border-slate-100 card-hover p-5">
-        <summary class="flex items-start gap-4 cursor-pointer list-none">
-            <div class="text-sky-600 mt-1 transition-transform group-open:rotate-45">
-                <i class="fas fa-plus-circle text-lg"></i>
-            </div>
-            <div>
-                <h4 class="font-bold text-slate-800 leading-tight">
-                    Best Integration of AI in Healthcare
-                </h4>
-                <p class="text-sm text-slate-600">
-                    Najlepsza integracja sztucznej inteligencji w ochronie zdrowia
-                </p>
-            </div>
-        </summary>
-        <p class="mt-3 text-sm text-slate-700">
-            Praktyczne wykorzystanie AI do poprawy diagnostyki, personalizacji terapii oraz optymalizacji procesów medycznych.
-        </p>
-    </details>
+                <details class="group bg-slate-50 rounded-2xl border border-slate-100 card-hover p-5">
+                    <summary class="flex items-start gap-4 cursor-pointer list-none">
+                        <div class="text-sky-600 mt-1 transition-transform group-open:rotate-45">
+                            <i class="fas fa-plus-circle text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 leading-tight">Excellence in Public-Private Partnerships & Collaboration</h4>
+                            <p class="text-sm text-slate-600">Doskonałość we współpracy publiczno-prywatnej</p>
+                        </div>
+                    </summary>
+                    <p class="mt-3 text-sm text-slate-700">
+                        Skuteczne partnerstwa i modele współpracy pomiędzy sektorem publicznym, prywatnym i organizacjami wspierającymi ochronę zdrowia.
+                    </p>
+                </details>
 
-    <details class="group bg-slate-50 rounded-2xl border border-slate-100 card-hover p-5">
-        <summary class="flex items-start gap-4 cursor-pointer list-none">
-            <div class="text-sky-600 mt-1 transition-transform group-open:rotate-45">
-                <i class="fas fa-plus-circle text-lg"></i>
-            </div>
-            <div>
-                <h4 class="font-bold text-slate-800 leading-tight">
-                    Sustainable and Green Practices in Hospitals
-                </h4>
-                <p class="text-sm text-slate-600">
-                    Zrównoważone i ekologiczne praktyki w szpitalach
-                </p>
-            </div>
-        </summary>
-        <p class="mt-3 text-sm text-slate-700">
-            Inicjatywy proekologiczne ograniczające wpływ szpitali na środowisko, efektywne zarządzanie energią i zasobami.
-        </p>
-    </details>
+                <details class="group bg-slate-50 rounded-2xl border border-slate-100 card-hover p-5">
+                    <summary class="flex items-start gap-4 cursor-pointer list-none">
+                        <div class="text-sky-600 mt-1 transition-transform group-open:rotate-45">
+                            <i class="fas fa-plus-circle text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 leading-tight">Healthcare Resilience and Crisis Management</h4>
+                            <p class="text-sm text-slate-600">Odporność systemu ochrony zdrowia i zarządzanie kryzysowe</p>
+                        </div>
+                    </summary>
+                    <p class="mt-3 text-sm text-slate-700">
+                        Zdolność placówki do skutecznego działania w sytuacjach kryzysowych, takich jak pandemie, katastrofy czy nagłe zakłócenia.
+                    </p>
+                </details>
 
-</div>
+                <details class="group bg-slate-50 rounded-2xl border border-slate-100 card-hover p-5">
+                    <summary class="flex items-start gap-4 cursor-pointer list-none">
+                        <div class="text-sky-600 mt-1 transition-transform group-open:rotate-45">
+                            <i class="fas fa-plus-circle text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 leading-tight">Best Integration of AI in Healthcare</h4>
+                            <p class="text-sm text-slate-600">Najlepsza integracja sztucznej inteligencji w ochronie zdrowia</p>
+                        </div>
+                    </summary>
+                    <p class="mt-3 text-sm text-slate-700">
+                        Praktyczne wykorzystanie AI do poprawy diagnostyki, personalizacji terapii oraz optymalizacji procesów medycznych.
+                    </p>
+                </details>
+
+                <details class="group bg-slate-50 rounded-2xl border border-slate-100 card-hover p-5">
+                    <summary class="flex items-start gap-4 cursor-pointer list-none">
+                        <div class="text-sky-600 mt-1 transition-transform group-open:rotate-45">
+                            <i class="fas fa-plus-circle text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 leading-tight">Sustainable and Green Practices in Hospitals</h4>
+                            <p class="text-sm text-slate-600">Zrównoważone i ekologiczne praktyki w szpitalach</p>
+                        </div>
+                    </summary>
+                    <p class="mt-3 text-sm text-slate-700">
+                        Inicjatywy proekologiczne ograniczające wpływ szpitali na środowisko, efektywne zarządzanie energią i zasobami.
+                    </p>
+                </details>
+
+            </div>
         </div>
     </section>
 
@@ -418,26 +393,24 @@
                         <div class="p-4 space-y-4">
                             <p class="leading-relaxed">Dyskusja wstępna z MZ i NFZ na temat kierunków transformacji polskiego systemu ochrony zdrowia i roli sektora prywatnego.</p>
 
-            <div class="grid gap-4 md:grid-cols-2 text-sm">
-                    <div>
-                        <p class="font-semibold text-slate-800 mb-1">Moderator</p>
-                        <p class="text-slate-600 italic">
-                            dr Andrzej Mądrala - Prezes honorowy OSSP
-                        </p>
-                    </div>
-
-                    <div>
-                        <p class="font-semibold text-slate-800 mb-1">Goście Specjalni:</p>
-                        <ul class="list-disc ml-5 space-y-1 text-slate-600">
-                            <li>dr Tomasz Maciejewski - Wiceminister Zdrowia</li>
-                            <li>Marek Augustyn – Wiceprezes Narodowego Funduszu Zdrowia</li>
-                            <li>Daniel Rutkowski - Prezes Agencji Oceny Technologii Medycznych i Taryfikacji</li>
-                            <li>prof. Wojciech Fendler - Prezes Agencji Badań Medycznych</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            </div>
+                            <div class="grid gap-4 md:grid-cols-2 text-sm">
+                                <div>
+                                    <p class="font-semibold text-slate-800 mb-1">Moderator</p>
+                                    <p class="text-slate-600 italic">
+                                        dr Andrzej Mądrala - Prezes honorowy OSSP
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-slate-800 mb-1">Goście Specjalni:</p>
+                                    <ul class="list-disc ml-5 space-y-1 text-slate-600">
+                                        <li>dr Tomasz Maciejewski - Wiceminister Zdrowia</li>
+                                        <li>Marek Augustyn – Wiceprezes Narodowego Funduszu Zdrowia</li>
+                                        <li>Daniel Rutkowski - Prezes Agencji Oceny Technologii Medycznych i Taryfikacji</li>
+                                        <li>prof. Wojciech Fendler - Prezes Agencji Badań Medycznych</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </details>
                 
@@ -461,27 +434,26 @@
                                 <li>Jak polskie szpitale prywatne mogą konkurować na rynku europejskim?</li>
                             </ul>
 
-            <div class="mt-6 pt-6 border-t border-slate-200">
-                <div class="grid gap-4 md:grid-cols-2 text-sm">
-                    <div>
-                        <p class="font-semibold text-slate-800 mb-1">Moderator</p>
-                        <p class="text-slate-600 italic">
-                            Andrzej Sokołowski - Prezes Zarządu OSSP
-                        </p>
-                    </div>
-
-                    <div>
-                        <p class="font-semibold text-slate-800 mb-1">Uczestnicy</p>
-                        <ul class="list-disc ml-5 space-y-1 text-slate-600">
-                            <li>Anna Nipanicz-Szałkowska - Dyrektor Szpitala MEDICOVER</li>
-                            <li>Krzysztof Macha – Wiceprezes Zarządu OSSP / OKULUS PLUS Centrum Okulistyki i Optometrii</li>
-                            <li>Łukasz Bruski – Prezes Centrum Słuchu i Mowy MEDINCUS</li>
-                            <li>Władysław Mizia - Consulting Healthcare Sector Leader for Poland DELOITTE</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            </div>
+                            <div class="mt-6 pt-6 border-t border-slate-200">
+                                <div class="grid gap-4 md:grid-cols-2 text-sm">
+                                    <div>
+                                        <p class="font-semibold text-slate-800 mb-1">Moderator</p>
+                                        <p class="text-slate-600 italic">
+                                            Andrzej Sokołowski - Prezes Zarządu OSSP
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-slate-800 mb-1">Uczestnicy</p>
+                                        <ul class="list-disc ml-5 space-y-1 text-slate-600">
+                                            <li>Anna Nipanicz-Szałkowska - Dyrektor Szpitala MEDICOVER</li>
+                                            <li>Krzysztof Macha – Wiceprezes Zarządu OSSP / OKULUS PLUS Centrum Okulistyki i Optometrii</li>
+                                            <li>Łukasz Bruski – Prezes Centrum Słuchu i Mowy MEDINCUS</li>
+                                            <li>Władysław Mizia - Consulting Healthcare Sector Leader for Poland DELOITTE</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </details>
 
@@ -506,29 +478,28 @@
                                 <li>Inicjatywy ponad podziałami.</li>
                             </ul>
 
-                    <div class="mt-6 pt-6 border-t border-slate-200">
-                        <div class="grid gap-4 md:grid-cols-2 text-sm">
-                            <div>
-                                <p class="font-semibold text-slate-800 mb-1">Moderator</p>
-                                <p class="text-slate-600 italic">
-                                    Krzysztof Macha – Wiceprezes Zarządu OSSP / OKULUS PLUS Centrum Okulistyki i Optometrii
-                                </p>
-                            </div>
-
-                            <div>
-                                <p class="font-semibold text-slate-800 mb-1">Uczestnicy</p>
-                                <ul class="list-disc ml-5 space-y-1 text-slate-600">
-                                    <li>dr Tomasz Maciejewski - Wiceminister Zdrowia</li>
-                                    <li>prof. Wojciech Fendler - Prezes Agencji Badań Medycznych</li>
-                                    <li>dr Jakub Kraszewski – Przewodniczący Polskiej Unii Szpitali Klinicznych / Dyrektor Naczelny UCK GUMed</li>
-                                    <li>Małgorzata Świątkiewicz - Dyrektor Szpitala Żywiec / Członek OSSP</li>
-                                    <li>Paweł Walicki - Członek Zarządu Pracodawcy dla Zdrowia / CEO Grupy Centrum Medyczne CMP</li>
-                                    <li>mec. Katarzyna Fortak-Karasińska - Partner Kancelaria F/K Legal</li>
-                                </ul>
+                            <div class="mt-6 pt-6 border-t border-slate-200">
+                                <div class="grid gap-4 md:grid-cols-2 text-sm">
+                                    <div>
+                                        <p class="font-semibold text-slate-800 mb-1">Moderator</p>
+                                        <p class="text-slate-600 italic">
+                                            Krzysztof Macha – Wiceprezes Zarządu OSSP / OKULUS PLUS Centrum Okulistyki i Optometrii
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-slate-800 mb-1">Uczestnicy</p>
+                                        <ul class="list-disc ml-5 space-y-1 text-slate-600">
+                                            <li>dr Tomasz Maciejewski - Wiceminister Zdrowia</li>
+                                            <li>prof. Wojciech Fendler - Prezes Agencji Badań Medycznych</li>
+                                            <li>dr Jakub Kraszewski – Przewodniczący Polskiej Unii Szpitali Klinicznych / Dyrektor Naczelny UCK GUMed</li>
+                                            <li>Małgorzata Świątkiewicz - Dyrektor Szpitala Żywiec / Członek OSSP</li>
+                                            <li>Paweł Walicki - Członek Zarządu Pracodawcy dla Zdrowia / CEO Grupy Centrum Medyczne CMP</li>
+                                            <li>mec. Katarzyna Fortak-Karasińska - Partner Kancelaria F/K Legal</li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    </div>
                     </div>
                 </details>
             
@@ -575,33 +546,32 @@
                                 </li>
                             </ul>
 
-            <div class="mt-6 pt-6 border-t border-slate-200">
-                <div class="grid gap-4 md:grid-cols-2 text-sm">
-                    <div>
-                        <p class="font-semibold text-slate-800 mb-1">Wstęp</p>
-                        <p class="text-slate-600 italic mb-4">
-                        Arkadiusz Grądkowski – Prezes Ogólnopolskiej Izby Gospodarczej Wyrobów Medycznych POLMED
-                        </p>
-                        <p class="font-semibold text-slate-800 mb-1">Moderator</p>
-                        <p class="text-slate-600 italic">                            
-                        Maciej Wiśniewski - Pełnomocnik Zarządu OSSP ds. cyfryzacji i cyberbezpieczeństwa
-                        </p>
-                    </div>
- 
-                    <div>
-                        <p class="font-semibold text-slate-800 mb-1">Uczestnicy</p>
-                        <ul class="list-disc ml-5 space-y-1 text-slate-600">
-                            <li>Łukasz Pruszyński – Zastępca Kierownika Zakładu Diagnostyki Obrazowej w Radomskim Centrum Onkologii</li>
-                            <li>Janusz Dramski - Wiceprezes Regionalnej Izby Gospodarczej w Katowicach / Organizator Health Business Innovation</li>
-                            <li>Paweł Grzymowicz - Prezes WAMA SOFT Sp. z o.o. / Partner Wspierający OSSP</li>
-                            <li>Sławomir Kmak - Dyrektor Operacyjny MEDBASE Polska</li>
-                            <li>Michał Janiszewski - Wiceprezes Zarządu MedTech Solutions S.A.</li>
-                            <li>Przedstawiciel GE Healthcare</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            </div>
+                            <div class="mt-6 pt-6 border-t border-slate-200">
+                                <div class="grid gap-4 md:grid-cols-2 text-sm">
+                                    <div>
+                                        <p class="font-semibold text-slate-800 mb-1">Wstęp</p>
+                                        <p class="text-slate-600 italic mb-4">
+                                            Arkadiusz Grądkowski – Prezes Ogólnopolskiej Izby Gospodarczej Wyrobów Medycznych POLMED
+                                        </p>
+                                        <p class="font-semibold text-slate-800 mb-1">Moderator</p>
+                                        <p class="text-slate-600 italic">                            
+                                            Maciej Wiśniewski - Pełnomocnik Zarządu OSSP ds. cyfryzacji i cyberbezpieczeństwa
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-slate-800 mb-1">Uczestnicy</p>
+                                        <ul class="list-disc ml-5 space-y-1 text-slate-600">
+                                            <li>Łukasz Pruszyński – Zastępca Kierownika Zakładu Diagnostyki Obrazowej w Radomskim Centrum Onkologii</li>
+                                            <li>Janusz Dramski - Wiceprezes Regionalnej Izby Gospodarczej w Katowicach / Organizator Health Business Innovation</li>
+                                            <li>Paweł Grzymowicz - Prezes WAMA SOFT Sp. z o.o. / Partner Wspierający OSSP</li>
+                                            <li>Sławomir Kmak - Dyrektor Operacyjny MEDBASE Polska</li>
+                                            <li>Michał Janiszewski - Wiceprezes Zarządu MedTech Solutions S.A.</li>
+                                            <li>Przedstawiciel GE Healthcare</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </details>
 
@@ -630,24 +600,25 @@
                                 <li>Aspekty prawne i ubezpieczeniowe ryzyk cyfrowych.</li>
                             </ul>
 
-            <div class="mt-6 pt-6 border-t border-slate-200">
-                <div class="grid gap-4 md:grid-cols-2 text-sm">
-                    <div>
-                        <p class="font-semibold text-slate-800 mb-1">Moderator</p>
-                        <p class="text-slate-600 italic">
-                            Zbigniew Kniżewski - Prezes CYBER360 Sp. z o.o. / Partner Wspierający OSSP
-                        </p>
-                    </div>
-
-                    <div>
-                        <p class="font-semibold text-slate-800 mb-1">Uczestnicy</p>
-                        <ul class="list-disc ml-5 space-y-1 text-slate-600">
-                            <li>Jeremi Olechnowicz - Kierownik CSiRT CeZ / Centrum e-Zdrowia</li>
-                            <li>Michał Zdunowski - CEO IS Consulting / Lider projektu ASCLEPIUS / Twórca platformy Shieldnet.eu</li>
-                            <li>Paweł Dłużewski - Head of IT Governance, Chief Information Security Officer LUX MED
-                            <li>Tomasz Jaworski - Dyrektor ds. Cyberbezpieczeństwa w Sektorze Zdrowia PALO ALTO</li>
-                        </ul>
-
+                            <div class="mt-6 pt-6 border-t border-slate-200">
+                                <div class="grid gap-4 md:grid-cols-2 text-sm">
+                                    <div>
+                                        <p class="font-semibold text-slate-800 mb-1">Moderator</p>
+                                        <p class="text-slate-600 italic">
+                                            Zbigniew Kniżewski - Prezes CYBER360 Sp. z o.o. / Partner Wspierający OSSP
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-slate-800 mb-1">Uczestnicy</p>
+                                        <ul class="list-disc ml-5 space-y-1 text-slate-600">
+                                            <li>Jeremi Olechnowicz - Kierownik CSiRT CeZ / Centrum e-Zdrowia</li>
+                                            <li>Michał Zdunowski - CEO IS Consulting / Lider projektu ASCLEPIUS / Twórca platformy Shieldnet.eu</li>
+                                            <li>Paweł Dłużewski - Head of IT Governance, Chief Information Security Officer LUX MED</li>
+                                            <li>Tomasz Jaworski - Dyrektor ds. Cyberbezpieczeństwa w Sektorze Zdrowia PALO ALTO</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </details>
@@ -663,172 +634,99 @@
                         <i class="fas fa-chevron-down text-slate-300 group-open:rotate-180 transition-transform"></i>
                     </summary>
                 </details>
-<!--
-<details class="group bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
-    <summary class="flex justify-between items-center p-8 cursor-pointer list-none">
-        <div class="flex items-center gap-6">
-            <span class="w-12 h-12 bg-cyan-100 text-cyan-600 rounded-2xl flex items-center justify-center font-bold">VI</span>
-            <div>
-                <h3 class="text-xl font-bold text-slate-800 tracking-tight">
-                    Prezentacja Medycznej Grupy Zakupowej MedGZ
-                </h3>
-                <p class="text-sm text-slate-400">15:15 - 15:30</p>
+                
+                </div>
+        </div>
+    </section>
+
+    <div id="partnerzy">
+        
+        <div class="mb-20 text-center container mx-auto px-6">
+            <h2 class="text-3xl font-extrabold text-slate-900 mb-12 flex items-center justify-center gap-4">
+                <span class="h-px w-12 bg-slate-200"></span>
+                Partnerzy Strategiczni
+                <span class="h-px w-12 bg-slate-200"></span>
+            </h2>
+            <div class="logo-grid">
+                <a href="https://www.uniaszpitali.pl/" target="_blank" class="logo-item">
+                    <img src="logo PUSK.png" alt="Polska Unia Szpitali Klinicznych">
+                </a>
+                <a href="https://pracodawcydlazdrowia.pl/" target="_blank" class="logo-item">
+                    <img src="logo PdZ.png" alt="Pracodawcy dla Zdrowia">
+                </a>
+                <a href="https://polmed.org.pl/" target="_blank" class="logo-item">
+                    <img src="logo POLMED.png" alt="POLMED">
+                </a>
             </div>
         </div>
-        <i class="fas fa-chevron-down text-slate-300 group-open:rotate-180 transition-transform"></i>
-    </summary>
 
-    <div class="px-8 pb-8 pt-0 text-slate-600 border-t border-slate-50">
-        <div class="p-4">
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-
-                <div>
-                    <div class="mb-4 p-5 bg-sky-50 rounded-2xl border border-sky-100">
-                        <span class="inline-block px-3 py-1 bg-sky-600 text-white text-[10px] font-bold rounded-full mb-3 uppercase tracking-wider">
-                            Premiera
-                        </span>
-
-                        <h4 class="text-lg font-bold text-slate-900 flex items-baseline gap-3">
-                            <i class="fas fa-robot text-sky-500"></i>
-                            <span>Robot operacyjny TOUMAI® Medbot</span>
-                        </h4>
-
-                        <p class="text-sm text-slate-600 leading-relaxed mt-2">
-                            Nowoczesny, czteroramienny robot chirurgiczny wspierający zabiegi minimalnie inwazyjne.
-                            Zapewnia obraz 3D wysokiej rozdzielczości, precyzyjne sterowanie oraz wysoki komfort
-                            pracy zespołu chirurgicznego. System posiada oznakowanie CE2797 i spełnia europejskie 
-                            standardy bezpieczeństwa medycznego.
-                        </p>
-                    </div>
-                    <ul class="space-y-2 text-sm ml-4 list-disc">
-                        <li>Wsparcie precyzyjnych zabiegów chirurgicznych w wielu specjalizacjach.</li>
-                        <li>Pełna kontrola pracy ramion w technologii 3D z wysoką rozdzielczością.</li>
-                        <li>Możliwość zdalnych operacji dzięki technologii 5G.</li>
-                        <li>Ergonomiczna konstrukcja i komfort pracy dla zespołu chirurgicznego.</li>
-                    </ul>
-                </div>
-
-                <div class="flex justify-center lg:justify-end">
-                    <a href="https://toumai.pl/">
-                        <img
-                            src="toumai-robot.png"
-                            alt="Robot chirurgiczny TOUMAI Medbot"
-                            class="max-h-[450px] w-auto object-contain"
-                        >
-                    </a>
-                </div>
-
+        <div class="mb-20 text-center container mx-auto px-6">
+            <h2 class="text-3xl font-extrabold text-slate-900 mb-12 flex items-center justify-center gap-4">
+                <span class="h-px w-12 bg-slate-200"></span>
+                Partner Merytoryczny
+                <span class="h-px w-12 bg-slate-200"></span>
+            </h2>
+            <div class="flex justify-center items-center">
+                <a href="https://www.deloitte.com/pl/" target="_blank" class="logo-item w-80">
+                    <img src="logo DELOITTE.png" alt="DELOITTE">
+                </a>
             </div>
+        </div>
+                    
+        <div class="mb-20 text-center container mx-auto px-6">
+            <h2 class="text-3xl font-extrabold text-slate-900 mb-12 flex items-center justify-center gap-4">
+                <span class="h-px w-12 bg-slate-200"></span>
+                Partnerzy Technologiczni
+                <span class="h-px w-12 bg-slate-200"></span>
+            </h2>
+            <div class="logo-grid">
+                <a href="https://cyber360.pl/" target="_blank" class="logo-item">
+                    <img src="logo CYBER360.png" alt="CYBER360">
+                </a>
+                <a href="https://vitreo.pl/" target="_blank" class="logo-item">
+                    <img src="logo WAMASOFT.png" alt="WAMA SOFT">
+                </a>
+                <a href="https://www.medbase.fi/pl/" target="_blank" class="logo-item">
+                    <img src="logo MEDBASE.png" alt="MEDBASE">
+                </a>
+                <a href="https://paloaaltonetworks.com/" target="_blank" class="logo-item">
+                    <img src="logo PALOALTO.png" alt="PALOALTO">
+                </a>
+                <a href="https://medtechs.pl/" target="_blank" class="logo-item">
+                    <img src="logo MEDTECHSOLUTIONS.png" alt="MEDTECHSOLUTIONS">
+                </a>
+                </div>
+        </div>
 
+        <div class="mb-20 text-center container mx-auto px-6">
+            <h2 class="text-3xl font-extrabold text-slate-900 mb-12 flex items-center justify-center gap-4">
+                <span class="h-px w-12 bg-slate-200"></span>
+                Patronat Medialny
+                <span class="h-px w-12 bg-slate-200"></span>
+            </h2>
+            <div class="logo-grid">
+                <a href="https://dlaszpitali.pl/" target="_blank" class="logo-item">
+                    <img src="logo dlaszpitali_pl.png" alt="Ogólnopolski Przegląd Medyczny">
+                </a>
+                <a href="https://www.termedia.pl/mz" target="_blank" class="logo-item">
+                    <img src="logo TERMEDIA.png" alt="TERMEDIA">
+                </a>
+            </div>
+        </div>
+
+        <div class="mb-20 text-center container mx-auto px-6">
+            <h2 class="text-3xl font-extrabold text-slate-900 mb-12 flex items-center justify-center gap-4">
+                <span class="h-px w-12 bg-slate-200"></span>
+                Organizacja
+                <span class="h-px w-12 bg-slate-200"></span>
+            </h2>
+            <div class="flex justify-center items-center">
+                <a href="https://www.infosynergie.pl/" target="_blank" class="logo-item">
+                    <img src="Logo InfoSynergie 3D.png" alt="InfoSynergie">
+                </a>
+            </div>
         </div>
     </div>
-</details>
--->
-                
-            </div>
-        </div>
-    </section>
-
-            <div id="partnerzy" class="mb-20 text-center">
-                <h2 class="text-3xl font-extrabold text-slate-900 mb-12 flex items-center justify-center gap-4">
-                </h2>
-                <h2 class="text-3xl font-extrabold text-slate-900 mb-12 flex items-center justify-center gap-4">
-                    <span class="h-px w-12 bg-slate-200"></span>
-                    Partnerzy Strategiczni
-                    <span class="h-px w-12 bg-slate-200"></span>
-                </h2>
-                <div class="logo-grid">
-                    <a href="https://www.uniaszpitali.pl/" target="_blank" class="logo-item">
-                        <img src="logo PUSK.png" alt="Polska Unia Szpitali Klinicznych">
-                    </a>
-                    <a href="https://pracodawcydlazdrowia.pl/" target="_blank" class="logo-item">
-                        <img src="logo PdZ.png" alt="Pracodawcy dla Zdrowia">
-                    </a>
-                    <a href="https://polmed.org.pl/" target="_blank" class="logo-item">
-                        <img src="logo POLMED.png" alt="POLMED">
-                    </a>
-                </div>
-            </div>
-
-            <div class="mb-20 text-center">
-                <h2 class="text-3xl font-extrabold text-slate-900 mb-12 flex items-center justify-center gap-4">
-                    <span class="h-px w-12 bg-slate-200"></span>
-                    Partner Merytoryczny
-                    <span class="h-px w-12 bg-slate-200"></span>
-                </h2>
-                <div class="flex justify-center items-center">
-                    <a href="https://www.deloitte.com/pl/" target="_blank" class="logo-item w-80">
-                        <img src="logo DELOITTE.png" alt="DELOITTE">
-                    </a>
-                </div>
-            </div>
-                        
-            <div class="mb-20 text-center">
-                <h2 class="text-3xl font-extrabold text-slate-900 mb-12 flex items-center justify-center gap-4">
-                    <span class="h-px w-12 bg-slate-200"></span>
-                    Partnerzy Technologiczni
-                    <span class="h-px w-12 bg-slate-200"></span>
-                </h2>
-                <div class="logo-grid">
-                    <a href="https://cyber360.pl/" target="_blank" class="logo-item">
-                        <img src="logo CYBER360.png" alt="CYBER360">
-                    </a>
-                    <a href="https://vitreo.pl/" target="_blank" class="logo-item">
-                        <img src="logo WAMASOFT.png" alt="WAMA SOFT">
-                    </a>
-                    <a href="https://www.medbase.fi/pl/" target="_blank" class="logo-item">
-                        <img src="logo MEDBASE.png" alt="MEDBASE">
-                    </a>
-                    <a href="https://paloaaltonetworks.com/" target="_blank" class="logo-item">
-                        <img src="logo PALOALTO.png" alt="PALOALTO">
-                    </a>
-                    <a href="https://medtechs.pl/" target="_blank" class="logo-item">
-                        <img src="logo MEDTECHSOLUTIONS.png" alt="MEDTECHSOLUTIONS">
-                    </a>
-                    <!--
-                    <a href="https://www.gehealthcare.pl/" target="_blank" class="logo-item">
-                        <img src="logo GE.png" alt="GE HEALTHCARE">
-                    </a>
-                    -->
-                </div>
-            </div>
-
-            <div class="mb-20 text-center">
-                <h2 class="text-3xl font-extrabold text-slate-900 mb-12 flex items-center justify-center gap-4">
-                    <span class="h-px w-12 bg-slate-200"></span>
-                    Patronat Medialny
-                    <span class="h-px w-12 bg-slate-200"></span>
-                </h2>
-                <div class="logo-grid">
-                    <a href="https://dlaszpitali.pl/" target="_blank" class="logo-item">
-                        <img src="logo dlaszpitali_pl.png" alt="Ogólnopolski Przegląd Medyczny">
-                    </a>
-                    <a href="https://www.termedia.pl/mz" target="_blank" class="logo-item">
-                        <img src="logo TERMEDIA.png" alt="TERMEDIA">
-                    </a>
-                    <!--
-                    <a href="#" target="_blank" class="logo-item">
-                        <img src="https://placehold.co/200x100/ffffff/64748b?text=Media+3" alt="Patronat Medialny 3">
-                    </a>
-                    -->
-                </div>
-            </div>
-
-            <div class="mb-20 text-center">
-                <h2 class="text-3xl font-extrabold text-slate-900 mb-12 flex items-center justify-center gap-4">
-                    <span class="h-px w-12 bg-slate-200"></span>
-                    Organizacja
-                    <span class="h-px w-12 bg-slate-200"></span>
-                </h2>
-                <div class="flex justify-center items-center">
-                    <a href="https://www.infosynergie.pl/" target="_blank" class="logo-item">
-                        <img src="Logo InfoSynergie 3D.png" alt="InfoSynergie">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <section id="rejestracja" class="py-24 bg-slate-900 text-white relative">
         <div class="container mx-auto px-6 relative z-10">
@@ -898,31 +796,32 @@
         const successMessage = document.getElementById('successMessage');
         const submitBtn = document.getElementById('submitBtn');
     
-        // !!! TUTAJ WPISZ SWÓJ ADRES EMAIL !!!
+        // Adres e-mail docelowy dla FormSubmit
         const FORMSUBMIT_EMAIL = 'maciej.wisniewski@infosynergie.pl'; 
     
         form.addEventListener('submit', function(e) {
             e.preventDefault();
     
-            // Blokada przycisku
+            // Blokada przycisku i zmiana tekstu
             const originalBtnText = submitBtn.innerText;
             submitBtn.innerText = 'Wysyłanie...';
             submitBtn.disabled = true;
     
             const formData = new FormData(form);
     
-            // Wysyłka AJAX
+            // Wysyłka AJAX do FormSubmit
             fetch(`https://formsubmit.co/ajax/${FORMSUBMIT_EMAIL}`, {
                 method: "POST",
                 body: formData
             })
             .then(response => response.json())
             .then(data => {
+                // Ukrycie formularza, pokazanie sukcesu
                 formContainer.classList.add('hidden');
                 successMessage.classList.remove('hidden');
                 form.reset();
                 
-                // Przewiń do komunikatu (opcjonalnie, jeśli formularz jest długi)
+                // Przewiń do komunikatu
                 successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
             })
             .catch(error => {
@@ -936,15 +835,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
